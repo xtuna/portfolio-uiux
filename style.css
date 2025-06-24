@@ -674,6 +674,50 @@ footer {
 
 /* --- Buttons --- */
 
+/* General Button Styling (if you don't have one already) */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none; /* Remove default button border */
+    text-align: center;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Specific styling for the Figma button */
+.figma-button {
+    background-color: #a259ff; /* Figma purple */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(162, 89, 255, 0.2); /* Subtle shadow */
+}
+
+.figma-button:hover {
+    background-color: #8c3bcc; /* Darker Figma purple on hover */
+    box-shadow: 0 6px 15px rgba(162, 89, 255, 0.4);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Style for icons within buttons */
+.button i {
+    font-size: 1.2em; /* Adjust icon size relative to text */
+}
+
+/* Container to center the single button */
+.single-project-link {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    margin-top: 40px; /* Space above the button, adjust as needed */
+    margin-bottom: 20px; /* Space below the button, adjust as needed */
+}
+
 .btn {
     padding: 8px 15px;
     border-radius: 5px;
