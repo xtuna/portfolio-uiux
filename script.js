@@ -304,6 +304,9 @@ const defaultProjects = [{
                 <div class="image-placeholder medium-image">
                     Future Features Roadmap
                 </div>
+                <div class="project-links">
+                    <!-- Buttons should be here -->
+                </div>
             </section>
         `
     }
@@ -351,9 +354,6 @@ const defaultProjects = [{
                 </p>
                 <div class="image-placeholder medium-image">
                     Store Locator and Reservation Interface
-                </div>
-                <div class="project-links">
-                    <!-- Buttons should be here -->
                 </div>
             </section>
         `
