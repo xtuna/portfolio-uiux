@@ -783,27 +783,23 @@ function openCaseStudyModal(event, id) {
     if (project && project.caseStudy) {
         currentCaseStudyId = id; // Set the currently active case study ID
 
-        // Generate links inline
-        let linksHTML = '';
+        // Generate single Figma link button if URL exists
+        let figmaButtonHTML = '';
         if (project.figmaUrl) {
-            linksHTML += `<a href="${project.figmaUrl}" class="project-link figma-link" target="_blank">
-                <i class="fab fa-figma"></i> View Figma
-            </a>`;
+            figmaButtonHTML = `
+                <section class="section fade-in">
+                    <div class="single-project-link">
+                        <a href="${project.figmaUrl}" class="button figma-button" target="_blank">
+                            <i class="fab fa-figma"></i> View Figma
+                        </a>
+                    </div>
+                </section>
+            `;
         }
-        // Removed liveUrl, githubUrl, documentUrl links from here as per your request
-
-        const linkSection = `
-            <section class="section fade-in">
-                <h2 class="section-title">Explore the Project</h2>
-                <div class="project-links">
-                    ${linksHTML}
-                </div>
-            </section>
-        `;
-
+        
         // Now get the container and inject the content
         const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
-        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
+        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + figmaButtonHTML;
 
         // Populate header
         document.getElementById('caseStudyTitle').textContent = project.title;
