@@ -242,13 +242,18 @@ nav {
 .about-image {
     width: 100%;
     height: 400px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
     border-radius: 20px;
+    overflow: hidden; /* This ensures the image stays within the rounded corners */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image cover the entire area while maintaining aspect ratio */
+    object-position: center; /* Centers the image */
 }
 
 .about-text h2 {
