@@ -7,6 +7,7 @@ const defaultProjects = [{
     tags: ["Mobile App", "User Research", "Prototyping", "UI Design"],
     active: true,
     // Add case study specific data here for each project
+    figmaUrl: "https://example.com/sakay-live",
     caseStudy: {
         subtitle: "Reimagining public transport navigation for Metro Manila commuters",
         role: "UX/UI Designer",
@@ -313,6 +314,7 @@ const defaultProjects = [{
     description: "Responsive website design for a local restaurant chain, featuring online ordering, store locator, and cultural menu storytelling optimized for mobile-first users.",
     tags: ["Web Design", "Responsive", "E-commerce", "Branding"],
     active: true,
+    figmaUrl: "https://example.com/sakay-live",
     caseStudy: {
         subtitle: "Bringing authentic Filipino flavors online with a modern web experience",
         role: "UX/UI Designer",
@@ -360,6 +362,7 @@ const defaultProjects = [{
     description: "Data visualization dashboard for barangay health workers to track vaccination rates, disease outbreaks, and maternal health metrics in their communities.",
     tags: ["Dashboard", "Data Viz", "Social Impact", "Admin Tools"],
     active: true,
+    figmaUrl: "https://example.com/sakay-live",
     caseStudy: {
         subtitle: "Empowering local health workers with actionable data insights",
         role: "UX/UI Designer",
@@ -411,6 +414,7 @@ const defaultProjects = [{
     description: "Mobile app helping Filipino families prepare for natural disasters with early warnings, evacuation routes, and emergency contacts. Features offline functionality for affected areas.",
     tags: ["Social Impact", "Mobile App", "Emergency", "Offline Design"],
     active: true,
+    figmaUrl: "https://example.com/sakay-live",
     caseStudy: {
         subtitle: "A lifeline for Filipino families in times of natural calamities",
         role: "UX/UI Designer",
@@ -684,14 +688,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p class="text-content">Detailed case study content for this project will be available soon.</p>
                                     <div class="image-placeholder medium-image">Placeholder</div>
                                 </section>`
-                }
+                },
+                figmaUrl: "", // Add a default empty string for new projects
             };
 
             if (currentEditingId) {
                 const project = projects.find(p => p.id === currentEditingId);
-                // Preserve existing caseStudy data if editing
-                Object.assign(project, { ...projectData,
-                    caseStudy: project.caseStudy || projectData.caseStudy
+                // Preserve existing caseStudy, liveUrl, and githubUrl data if editing
+                Object.assign(project, {
+                    ...projectData,
+                    caseStudy: project.caseStudy || projectData.caseStudy,
+                    figmaUrl: project.figmaUrl || projectData.figmaUrl
                 });
             } else {
                 const newId = projects.length > 0 ? Math.max(...projects.map(p => p.id), 0) + 1 : 1;
@@ -747,6 +754,14 @@ function renderPublicProjects() {
                         ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('\n')}
                     </div>
                     <a href="#" class="project-link" data-project-id="${project.id}" onclick="openCaseStudyModal(event, ${project.id})">View Case Study →</a>
+                    <div class="project-actions">
+                        ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="project-action-link">
+                            <i class="fas fa-external-link-alt"></i> View Live
+                        </a>` : ''}
+                        ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-action-link">
+                            <i class="fab fa-github"></i> View on Github
+                        </a>` : ''}
+                    </div>
                 </div>
             `;
             container.appendChild(projectCard);
