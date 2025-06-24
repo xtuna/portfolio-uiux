@@ -6,6 +6,9 @@ const defaultProjects = [{
     description: "Redesigned Metro Manila's public transport app to improve user experience for daily commuters. Enhanced route visualization, real-time updates, and accessibility features.",
     tags: ["Mobile App", "User Research", "Prototyping", "UI Design"],
     active: true,
+    isRecent: true,
+    figmaUrl: "https://www.figma.com/file/YOUR_FIGMA_FILE_ID_1", // Added Figma URL
+    // Removed liveUrl and githubUrl as requested
     // Add case study specific data here for each project
     caseStudy: {
         subtitle: "Reimagining public transport navigation for Metro Manila commuters",
@@ -70,7 +73,8 @@ const defaultProjects = [{
                     <div>
                         <h4><strong>Poor Visual Hierarchy</strong></h4>
                         <p>Important information like travel time and cost isn't prominently displayed, requiring users to scan through text.</p>
-
+                    </div>
+                    <div>
                         <h4><strong>No Personalization</strong></h4>
                         <p>Users can't save favorite routes or customize the app based on their regular commuting patterns.</p>
                     </div>
@@ -273,7 +277,8 @@ const defaultProjects = [{
                     <div>
                         <h4><strong>Business Value</strong></h4>
                         <p>Enhanced user satisfaction could lead to increased daily active users and reduced support requests.</p>
-
+                    </div>
+                    <div>
                         <h4><strong>Technical Feasibility</strong></h4>
                         <p>Design solutions work within existing technical constraints while preparing for future real-time data integration.</p>
                     </div>
@@ -306,7 +311,6 @@ const defaultProjects = [{
             </section>
         `
     }
-    figmaUrl: "https://example.com/sakay-live",
 }, {
     id: 2,
     title: "Filipino Restaurant Chain Website",
@@ -314,7 +318,9 @@ const defaultProjects = [{
     description: "Responsive website design for a local restaurant chain, featuring online ordering, store locator, and cultural menu storytelling optimized for mobile-first users.",
     tags: ["Web Design", "Responsive", "E-commerce", "Branding"],
     active: true,
-    figmaUrl: "https://example.com/sakay-live",
+    isRecent: true,
+    figmaUrl: "https://www.figma.com/file/YOUR_FIGMA_FILE_ID_2", // Added Figma URL
+    // Removed liveUrl and githubUrl as requested
     caseStudy: {
         subtitle: "Bringing authentic Filipino flavors online with a modern web experience",
         role: "UX/UI Designer",
@@ -362,7 +368,9 @@ const defaultProjects = [{
     description: "Data visualization dashboard for barangay health workers to track vaccination rates, disease outbreaks, and maternal health metrics in their communities.",
     tags: ["Dashboard", "Data Viz", "Social Impact", "Admin Tools"],
     active: true,
-    figmaUrl: "https://example.com/sakay-live",
+    isRecent: false,
+    figmaUrl: "https://www.figma.com/file/YOUR_FIGMA_FILE_ID_3", // Added Figma URL
+    // Removed liveUrl and githubUrl as requested
     caseStudy: {
         subtitle: "Empowering local health workers with actionable data insights",
         role: "UX/UI Designer",
@@ -414,7 +422,9 @@ const defaultProjects = [{
     description: "Mobile app helping Filipino families prepare for natural disasters with early warnings, evacuation routes, and emergency contacts. Features offline functionality for affected areas.",
     tags: ["Social Impact", "Mobile App", "Emergency", "Offline Design"],
     active: true,
-    figmaUrl: "https://example.com/sakay-live",
+    isRecent: false,
+    figmaUrl: "https://www.figma.com/file/YOUR_FIGMA_FILE_ID_4", // Added Figma URL
+    // Removed liveUrl and githubUrl as requested
     caseStudy: {
         subtitle: "A lifeline for Filipino families in times of natural calamities",
         role: "UX/UI Designer",
@@ -591,6 +601,8 @@ function editProject(id) {
         document.getElementById('projectTitle').value = project.title;
         document.getElementById('projectImage').value = project.image;
         document.getElementById('projectDescription').value = project.description;
+        // Add fields for figmaUrl if you want to edit them through the manager
+        // document.getElementById('projectFigmaUrl').value = project.figmaUrl || ''; // Removed liveUrl and githubUrl
 
         displayTags();
         document.getElementById('projectModal').style.display = 'block';
@@ -669,6 +681,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const title = document.getElementById('projectTitle').value;
             const image = document.getElementById('projectImage').value;
             const description = document.getElementById('projectDescription').value;
+            // Get figmaUrl if you have an input for it in the manager modal
+            // const figmaUrl = document.getElementById('projectFigmaUrl').value;
 
             const projectData = {
                 title,
@@ -676,7 +690,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 description,
                 tags: currentTags,
                 active: true,
-                // For new projects, provide a default empty case study object
+                isRecent: true, // Default new projects to recent. You can add a checkbox for this.
+                // For new projects, provide a default empty case study object and placeholder URLs
                 caseStudy: {
                     subtitle: "",
                     role: "",
@@ -689,16 +704,18 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <div class="image-placeholder medium-image">Placeholder</div>
                                 </section>`
                 },
-                figmaUrl: "", // Add a default empty string for new projects
+                figmaUrl: "", // Added figmaUrl field for new projects
+                // Removed liveUrl and githubUrl for new projects
             };
 
             if (currentEditingId) {
                 const project = projects.find(p => p.id === currentEditingId);
-                // Preserve existing caseStudy, liveUrl, and githubUrl data if editing
+                // Preserve existing caseStudy and figmaUrl data if editing
                 Object.assign(project, {
                     ...projectData,
                     caseStudy: project.caseStudy || projectData.caseStudy,
-                    figmaUrl: project.figmaUrl || projectData.figmaUrl
+                    figmaUrl: project.figmaUrl || projectData.figmaUrl, // Preserve if not updated via form
+                    // Removed liveUrl and githubUrl here
                 });
             } else {
                 const newId = projects.length > 0 ? Math.max(...projects.map(p => p.id), 0) + 1 : 1;
@@ -711,6 +728,10 @@ document.addEventListener('DOMContentLoaded', () => {
             saveProjects();
             // loadManagerProjects(); // Only needed for manager.html
             closeModal();
+            // If on works.html, re-render the projects after saving
+            if (document.body.classList.contains('works')) {
+                renderProjectsOnWorksPage();
+            }
         });
     }
 
@@ -722,129 +743,164 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Event listeners for Recent/Old projects tabs on works.html
+    const recentProjectsTab = document.getElementById('recent-projects');
+    const oldProjectsTab = document.getElementById('old-projects');
+
+    if (recentProjectsTab && oldProjectsTab) {
+        recentProjectsTab.addEventListener('click', () => {
+            recentProjectsTab.classList.add('active');
+            recentProjectsTab.classList.remove('inactive');
+            oldProjectsTab.classList.add('inactive');
+            oldProjectsTab.classList.remove('active');
+            document.getElementById('recent-projects-content').classList.remove('hidden');
+            document.getElementById('old-projects-content').classList.add('hidden');
+        });
+
+        oldProjectsTab.addEventListener('click', () => {
+            oldProjectsTab.classList.add('active');
+            oldProjectsTab.classList.remove('inactive');
+            recentProjectsTab.classList.add('inactive');
+            recentProjectsTab.classList.remove('active');
+            document.getElementById('old-projects-content').classList.remove('hidden');
+            document.getElementById('recent-projects-content').classList.add('hidden');
+        });
+    }
 });
 
 
-// --- Public Portfolio Rendering (for index.html) ---
+// --- Public Portfolio Rendering (for index.html and works.html) ---
 
-function renderPublicProjects() {
-    const container = document.getElementById('projects-grid');
-    if (container) {
-        container.innerHTML = '';
+// This function now renders projects into a given container
+function renderProjects(containerElement, projectList) {
+    if (!containerElement) return;
 
-        const activeProjects = projects.filter(p => p.active);
+    containerElement.innerHTML = ''; // Clear existing content
 
-        activeProjects.forEach((project, index) => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            projectCard.style.opacity = '0';
-            projectCard.style.transform = 'translateY(30px)';
-            projectCard.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    projectList.forEach((project, index) => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        projectCard.style.opacity = '0';
+        projectCard.style.transform = 'translateY(30px)';
+        projectCard.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
 
-            projectCard.innerHTML = `
-                <div class="project-image">
-                    ${project.image}
+        // Ensure figmaUrl exists before creating link
+        const figmaLinkHtml = project.figmaUrl ? `
+            <a href="${project.figmaUrl}" target="_blank" class="project-action-link">
+                <i class="fab fa-figma"></i> View on Figma
+            </a>` : ''; // Modified to only include Figma link
+
+        projectCard.innerHTML = `
+            <div class="project-image">
+                ${project.image}
+            </div>
+            <div class="project-content">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">
+                    ${project.description}
+                </p>
+                <div class="project-tags">
+                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('\n')}
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">${project.title}</h3>
-                    <p class="project-description">
-                        ${project.description}
-                    </p>
-                    <div class="project-tags">
-                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('\n')}
-                    </div>
-                    <a href="#" class="project-link" data-project-id="${project.id}" onclick="openCaseStudyModal(event, ${project.id})">View Case Study →</a>
-                    <div class="project-actions">
-                        ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="project-action-link">
-                            <i class="fas fa-external-link-alt"></i> View Live
-                        </a>` : ''}
-                        ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" class="project-action-link">
-                            <i class="fab fa-github"></i> View on Github
-                        </a>` : ''}
-                    </div>
+                <a href="#" class="project-link" data-project-id="${project.id}" onclick="openCaseStudyModal(event, ${project.id})">View Case Study →</a>
+                <div class="project-actions">
+                    ${figmaLinkHtml}
                 </div>
-            `;
-            container.appendChild(projectCard);
-        });
+            </div>
+        `;
+        containerElement.appendChild(projectCard);
+    });
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-    }
+    containerElement.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+    });
 }
 
+
+// New function to handle rendering specifically for works.html
+function renderProjectsOnWorksPage() {
+    const recentContainer = document.getElementById('recent-projects-content');
+    const oldContainer = document.getElementById('old-projects-content');
+
+    const activeRecentProjects = projects.filter(p => p.active && p.isRecent);
+    const activeOldProjects = projects.filter(p => p.active && !p.isRecent);
+
+    renderProjects(recentContainer, activeRecentProjects);
+    renderProjects(oldContainer, activeOldProjects);
+}
+
+
+// --- Case Study Modal Functions ---
 function openCaseStudyModal(event, id) {
-    event.preventDefault();
-    const modal = document.getElementById('caseStudyModal');
+    event.preventDefault(); // Prevent default link behavior
+    const modal = document.getElementById('project-detail'); // Correct ID for works.html modal
     const project = projects.find(p => p.id === id);
 
     if (project && project.caseStudy) {
-        currentCaseStudyId = id;
+        currentCaseStudyId = id; // Set the currently active case study ID
 
-        // Generate links inline
-        let linksHTML = '';
-        if (project.figmaUrl) {
-            linksHTML += `<a href="${project.figmaUrl}" class="project-link" target="_blank">
-                <i class="fab fa-figma"></i> View Figma
-            </a>`;
+        // Populate detail body
+        const projectDetailBody = document.getElementById('project-detail-body');
+        if (projectDetailBody) {
+            projectDetailBody.innerHTML = `
+                <section class="hero-case-study">
+                    <div class="container">
+                        <h1 id="caseStudyTitle">${project.title}</h1>
+                        <p class="hero-subtitle" id="caseStudySubtitle">${project.caseStudy.subtitle}</p>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Role</div>
+                                <div class="meta-value" id="caseStudyRole">${project.caseStudy.role}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Timeline</div>
+                                <div class="meta-value" id="caseStudyTimeline">${project.caseStudy.timeline}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Team</div>
+                                <div class="meta-value" id="caseStudyTeam">${project.caseStudy.team}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Tools</div>
+                                <div class="meta-value" id="caseStudyTools">${project.caseStudy.tools}</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <main class="content-case-study">
+                    <div class="container">
+                        ${project.caseStudy.contentHTML}
+                    </div>
+                </main>
+                <section class="case-nav">
+                    <div class="container">
+                        <button class="nav-button" id="prevProjectBtn" onclick="showPrevProject()">← Previous Project</button>
+                        <button class="nav-button" id="nextProjectBtn" onclick="showNextProject()">Next Project →</button>
+                    </div>
+                </section>
+            `;
         }
-        if (project.liveUrl) {
-            linksHTML += `<a href="${project.liveUrl}" class="project-link" target="_blank">
-                <i class="fas fa-globe"></i> View Live
-            </a>`;
-        }
-        if (project.githubUrl) {
-            linksHTML += `<a href="${project.githubUrl}" class="project-link" target="_blank">
-                <i class="fab fa-github"></i> View Code
-            </a>`;
-        }
-        if (project.documentUrl) {
-            linksHTML += `<a href="${project.documentUrl}" class="project-link" target="_blank">
-                <i class="fas fa-file-alt"></i> View Document
-            </a>`;
-        }
-        const linkSection = `
-          const linkSection = `
-          <section class="section fade-in">
-            <h2 class="section-title">Explore the Project</h2>
-            <div class="project-links">
-              ${linksHTML}
-            </div>
-          </section>
-        `;
 
-
-        // Now get the container and inject the content
-        const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
-        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
-
-
-        // Fill header info
-        document.getElementById('caseStudyTitle').textContent = project.title;
-        document.getElementById('caseStudySubtitle').textContent = project.caseStudy.subtitle;
-        document.getElementById('caseStudyRole').textContent = project.caseStudy.role;
-        document.getElementById('caseStudyTimeline').textContent = project.caseStudy.timeline;
-        document.getElementById('caseStudyTeam').textContent = project.caseStudy.team;
-        document.getElementById('caseStudyTools').textContent = project.caseStudy.tools;
-
-        // Re-observe animated sections
-        caseStudyContentContainer.querySelectorAll('.fade-in').forEach(section => {
-            section.classList.remove('visible');
+        // Re-observe elements inside the modal for animations
+        projectDetailBody.querySelectorAll('.fade-in').forEach(section => {
+            section.classList.remove('visible'); // Remove for re-animation
             observer.observe(section);
         });
 
+        // Update Prev/Next buttons visibility
         updateCaseStudyNavButtons();
-        modal.style.display = 'block';
-        document.body.classList.add('modal-open');
+
+        modal.classList.remove('hidden'); // Show the modal
+        document.body.classList.add('modal-open'); // Add class to body to prevent scrolling
     } else {
         alert("Case study content not available for this project.");
     }
 }
 
-
-function closeCaseStudyModal() {
-    const modal = document.getElementById('caseStudyModal');
-    modal.style.display = 'none'; // Hide the modal
+function closeProjectDetail() {
+    const modal = document.getElementById('project-detail');
+    modal.classList.add('hidden'); // Hide the modal
     document.body.classList.remove('modal-open'); // Remove class from body to allow scrolling
     currentCaseStudyId = null; // Clear the active case study ID
 }
@@ -854,8 +910,6 @@ function showPrevProject() {
     const currentIndex = activeProjects.findIndex(p => p.id === currentCaseStudyId);
     if (currentIndex > 0) {
         const prevProject = activeProjects[currentIndex - 1];
-        // Note: Event is not typically passed here, if it's an internal function call.
-        // The preventDefault is handled when openCaseStudyModal is called from an anchor tag.
         openCaseStudyModal(new Event('click'), prevProject.id); // Create a dummy event for consistency
     }
 }
@@ -865,7 +919,6 @@ function showNextProject() {
     const currentIndex = activeProjects.findIndex(p => p.id === currentCaseStudyId);
     if (currentIndex < activeProjects.length - 1) {
         const nextProject = activeProjects[currentIndex + 1];
-        // Note: Event is not typically passed here, if it's an internal function call.
         openCaseStudyModal(new Event('click'), nextProject.id); // Create a dummy event for consistency
     }
 }
@@ -926,7 +979,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial render for the public page when it loads
     loadProjectsFromLocalStorage(); // Load projects from local storage
-    renderPublicProjects(); // Render public projects
+    // Check if the current page is works.html or index.html to render projects accordingly
+    if (document.body.classList.contains('works')) {
+        renderProjectsOnWorksPage(); // For works.html
+    } else {
+        renderPublicProjects(); // For index.html
+    }
 });
 
 
