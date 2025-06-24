@@ -352,6 +352,9 @@ const defaultProjects = [{
                 <div class="image-placeholder medium-image">
                     Store Locator and Reservation Interface
                 </div>
+                <div class="project-links">
+                    <!-- Buttons should be here -->
+                </div>
             </section>
         `
     }
