@@ -828,7 +828,6 @@ function openCaseStudyModal(event, id) {
     }
 }
 
-
 function closeCaseStudyModal() {
     const modal = document.getElementById('caseStudyModal');
     modal.style.display = 'none'; // Hide the modal
@@ -871,7 +870,6 @@ function updateCaseStudyNavButtons() {
         nextBtn.style.display = (currentIndex < activeProjects.length - 1) ? 'inline-block' : 'none';
     }
 }
-
 
 // --- General JavaScript ---
 
@@ -916,7 +914,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPublicProjects(); // Render public projects
 });
 
-
 // Add scroll effect to header
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -951,7 +948,6 @@ const observer = new IntersectionObserver(function(entries) {
         }
     });
 }, observerOptions);
-
 
 // Resume download function
 function downloadResume() {
