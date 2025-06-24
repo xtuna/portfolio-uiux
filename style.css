@@ -214,14 +214,27 @@ nav {
 }
 
 /* Existing .project-link for "View Case Study" */
-.project-link {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    margin-top: 1.5rem; /* Add some space above */
-    display: inline-block; /* Ensure it respects margin-top */
+.project-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
 }
+
+.project-link {
+  background: rgba(53, 58, 132, 1);
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
 .project-link:hover {
     color: #764ba2;
