@@ -213,43 +213,43 @@ nav {
     font-weight: 500;
 }
 
-/* Existing .project-link for "View Case Study" */
+/* Styles for the project links within the case study modal */
 .project-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between links */
+    margin-top: 20px;
+    justify-content: center; /* Center the links */
+    align-items: center;
 }
 
 .project-link {
-  background: rgba(53, 58, 132, 1);
-  color: white;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: inline-flex; /* Allows icon and text to sit nicely */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 
-.project-link:hover {
+/* .project-link:hover {
     color: #764ba2;
-}
+} */
 
 /* NEW: Styles for "View Live" and "View on Github" links */
-.project-actions {
+/* .project-actions {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 30px;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
+} */
 
-.project-action-link {
+/* .project-action-link {
     background: rgba(53, 58, 132, 1);
     color: white;
     text-decoration: none;
@@ -266,8 +266,77 @@ nav {
     background: rgba(113, 126, 241, 1);
     color: black;
     transform: translateY(-2px);
+} */
+
+/* Specific style for Figma link */
+.project-link.figma-link {
+    background-color: #a259ff; /* Figma purple */
+    color: #ffffff;
+    border: 1px solid #a259ff;
 }
 
+.project-link.figma-link:hover {
+    background-color: #8c3bcc; /* Darker Figma purple on hover */
+    box-shadow: 0 4px 10px rgba(162, 89, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Ensure Font Awesome icons are styled correctly */
+.project-link i {
+    font-size: 1.1em; /* Adjust icon size */
+}
+
+/* Optional: If you want to differentiate other links, you can add more styles */
+/*
+.project-link.live-link {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+.project-link.live-link:hover {
+    background-color: #45a049;
+}
+*/
+
+/* Basic styling for section titles and text within case study modal */
+.case-study-modal .section-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.case-study-modal .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color); /* Assuming you have an accent color variable */
+    border-radius: 2px;
+}
+
+.case-study-modal .section-subtitle {
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.case-study-modal .text-content {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* You might already have these, but including for completeness */
+.modal-content .container {
+    padding: 20px;
+}
 
 /* --- About Section --- */
 
