@@ -778,6 +778,9 @@ function openCaseStudyModal(event, id) {
     event.preventDefault(); // Prevent default link behavior
     const modal = document.getElementById('caseStudyModal');
     const project = projects.find(p => p.id === id);
+    const linkSection = generateProjectLinks(project);
+        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
+
 
     if (project && project.caseStudy) {
         currentCaseStudyId = id; // Set the currently active case study ID
@@ -809,6 +812,37 @@ function openCaseStudyModal(event, id) {
         alert("Case study content not available for this project.");
     }
 }
+
+function generateProjectLinks(project) {
+  let linksHTML = '';
+
+  if (project.figmaUrl) {
+    linksHTML += `<a href="${project.figmaUrl}" class="project-link" target="_blank">
+      <i class="fab fa-figma"></i> View Figma
+    </a>`;
+  }
+
+  if (project.liveUrl) {
+    linksHTML += `<a href="${project.liveUrl}" class="project-link" target="_blank">
+      <i class="fas fa-globe"></i> View Live
+    </a>`;
+  }
+
+  if (project.githubUrl) {
+    linksHTML += `<a href="${project.githubUrl}" class="project-link" target="_blank">
+      <i class="fab fa-github"></i> View Code
+    </a>`;
+  }
+
+  if (project.documentUrl) {
+    linksHTML += `<a href="${project.documentUrl}" class="project-link" target="_blank">
+      <i class="fas fa-file-alt"></i> View Document
+    </a>`;
+  }
+
+  return `<div class="project-links">${linksHTML}</div>`;
+}
+
 
 function closeCaseStudyModal() {
     const modal = document.getElementById('caseStudyModal');
