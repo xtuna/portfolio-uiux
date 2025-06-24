@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Manager</title>
+
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+
+    <header>
+
+
+        <nav class="container">
+
+            <a href="index.html" class="logo">Back to Portfolio</a>
+            <ul class="nav-links">
+
+
+                <li><a href="index.html" class="resume-btn">View Public Portfolio</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+
+    <div id="portfolioManagerSection">
+
+
+        <section class="portfolio-manager-section">
+
+
+            <div class="container">
+
+
+                <div class="manager-header">
+
+
+                    <h2>Portfolio Manager</h2>
+
+                    <button class="btn btn-primary" onclick="openAddModal()">Add New Project</button>
+                </div>
+
+
+
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+
+                        <h3>Total Projects</h3>
+
+
+                        <p id="totalProjects">0</p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+
+                        <h3>Active Projects</h3>
+
+
+                        <p id="activeProjects">0</p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+
+                        <h3>Hidden Projects</h3>
+
+
+                        <p id="inactiveProjects">0</p>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="project-list-header">
+
+
+                    <h3>All Projects</h3>
+
+                    <button class="btn btn-secondary" onclick="exportProjects()">Export Data (JSON)</button>
+                </div>
+
+
+
+
+                <div id="projectsContainer">
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+
+    <div class="modal" id="projectModal">
+
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+
+                <h2 id="modalTitle">Add New Project</h2>
+
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+
+
+            <form id="projectForm">
+
+
+                <div class="form-group">
+
+                    <label for="projectTitle">Project Title</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="projectImage">Image Description/Text</label>
+                    <input type="text" id="projectImage" placeholder="e.g., Sakay.ph Redesign - Mobile App">
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="projectDescription">Description</label>
+                    <textarea id="projectDescription" required></textarea>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="projectTags">Tags (press Enter to add)</label>
+                    <input type="text" id="projectTagInput" placeholder="Enter a tag and press Enter">
+                    <div class="tags-input" id="projectTags"></div>
+
+                </div>
+
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Project</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            loadProjectsFromLocalStorage();
+
+            loadManagerProjects();
+        });
+    </script>
+
+</body>
+
+
+
+</html>

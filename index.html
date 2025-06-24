@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma. Cristina S. Velasco - UX/UI Designer</title>
+
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+
+    <header>
+
+
+        <nav class="container">
+
+            <a href="#" class="logo">Ma. Cristina S. Velasco</a>
+            <ul class="nav-links">
+
+
+                <li><a href="#projects" id="navProjects">Projects</a></li>
+
+
+                <li><a href="#about">About</a></li>
+
+
+                <li><a href="#contact">Contact</a></li>
+
+
+                <li><a href="#" class="resume-btn" onclick="downloadResume()">Resume</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+
+    <div id="publicPortfolioSections">
+
+
+        <section class="hero">
+
+
+            <div class="container">
+
+
+                <h1>UX/UI Designer</h1>
+
+
+                <p>Creating meaningful digital experiences that solve real problems for Filipino users. Passionate about accessible design and cultural relevance.</p>
+
+                <a href="#projects" class="cta-button">View My Work</a>
+                <button class="mobile-resume" onclick="downloadResume()">Download Resume</button>
+            </div>
+
+        </section>
+
+
+
+
+        <section class="projects" id="projects">
+
+
+            <div class="container">
+
+
+                <h2 class="section-title">My Featured Projects</h2>
+
+
+                <div class="projects-grid" id="projects-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <section class="about" id="about">
+
+
+            <div class="container">
+
+
+                <div class="about-content">
+
+
+                    <div class="about-image">
+
+                        Your Professional Photo
+                    </div>
+
+
+                    <div class="about-text">
+
+
+                        <h2>About Me</h2>
+
+
+                        <p>
+
+                            I'm a passionate UX/UI designer based in Metro Manila, focused on creating digital experiences that truly serve Filipino users. With a background in [your background], I bring a unique perspective to design challenges.
+                        </p>
+
+
+                        <p>
+
+                            My design philosophy centers on cultural relevance, accessibility, and solving real problems that matter to local communities. I believe great design should be both beautiful and functional, especially in emerging markets.
+                        </p>
+
+
+                        <div class="skills">
+
+
+                            <div class="skill">User Research</div>
+
+
+                            <div class="skill">Prototyping</div>
+
+
+                            <div class="skill">Visual Design</div>
+
+
+                            <div class="skill">Figma</div>
+
+
+                            <div class="skill">Usability Testing</div>
+
+
+                            <div class="skill">Mobile Design</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <section class="contact" id="contact">
+
+
+            <div class="container">
+
+
+                <h2>Let's Work Together</h2>
+
+
+                <p>I'm always interested in new opportunities and meaningful projects.</p>
+
+
+                <div class="contact-links">
+
+                    <a href="mailto:macristinavelasco1222@gmail.com" class="contact-link">Email Me</a>
+                    <a href="www.linkedin.com/in/ma-cristina-velasco-326b46210" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/xtuna" class="contact-link">Github</a>
+                    <a href="#" class="contact-link" onclick="downloadResume()">Download Resume</a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <footer>
+
+
+            <div class="container">
+
+
+                <p>&copy; 2024 Your Name. Designed and developed with ❤️ in the Philippines.</p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+
+
+    <div class="project-modal" id="caseStudyModal">
+
+
+        <div class="modal-case-study-content">
+
+
+            <header>
+
+
+                <nav class="container">
+
+                    <a href="#" class="logo">Your Name</a>
+                    <button class="back-link" onclick="closeCaseStudyModal()">← Back to Portfolio</button>
+                </nav>
+
+            </header>
+
+
+
+
+            <section class="hero-case-study" id="caseStudyHero">
+
+
+                <div class="container">
+
+
+                    <h1 id="caseStudyTitle">Project Title</h1>
+
+
+                    <p class="hero-subtitle" id="caseStudySubtitle">Project Subtitle</p>
+
+
+
+
+                    <div class="project-meta">
+
+
+                        <div class="meta-item">
+
+
+                            <div class="meta-label">Role</div>
+
+
+                            <div class="meta-value" id="caseStudyRole"></div>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+
+                            <div class="meta-label">Timeline</div>
+
+
+                            <div class="meta-value" id="caseStudyTimeline"></div>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+
+                            <div class="meta-label">Team</div>
+
+
+                            <div class="meta-value" id="caseStudyTeam"></div>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+
+                            <div class="meta-label">Tools</div>
+
+
+                            <div class="meta-value" id="caseStudyTools"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+            <main class="content-case-study" id="caseStudyContent">
+
+
+                <div class="container">
+
+                </div>
+
+            </main>
+
+
+
+
+            <section class="case-nav">
+
+
+                <div class="container">
+
+                    <button class="nav-button" id="prevProjectBtn" onclick="showPrevProject()">← Previous Project</button>
+                    <button class="nav-button" id="nextProjectBtn" onclick="showNextProject()">Next Project →</button>
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+
+
+</html>

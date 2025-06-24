@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name - Case Study</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        
+        header {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #764ba2;
+        }
+        /* Hero Section */
+        
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        /* Main Content */
+        
+        .content {
+            padding: 80px 0;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .section-subtitle {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: #34495e;
+        }
+        
+        .text-content {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #5a6c7d;
+        }
+        /* Problem Statement */
+        
+        .problem-box {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .problem-box h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+        /* Solution Box */
+        
+        .solution-box {
+            background: #f0fff4;
+            border-left: 4px solid #27ae60;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .solution-box h3 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+        /* Image Placeholders */
+        /*
+        For actual images, replace the .image-placeholder div with an <img> tag.
+        Example: <img src="path/to/your/image.jpg" alt="Description of image" class="case-study-image large-image">
+        You can remove the background, border, padding, and text-align from .image-placeholder and use it just for height/width control or define new classes for actual images.
+        */
+        
+        .image-placeholder {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #ced4da;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: #6c757d;
+            font-weight: 500;
+            display: flex;
+            /* Added for centering placeholder text */
+            align-items: center;
+            /* Added for centering placeholder text */
+            justify-content: center;
+            /* Added for centering placeholder text */
+            font-style: italic;
+            /* Added for placeholder readability */
+        }
+        
+        .case-study-image {
+            /* New class for actual images */
+            width: 100%;
+            height: auto;
+            /* Maintain aspect ratio */
+            display: block;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Use these classes with .case-study-image if you want to enforce specific heights */
+        
+        .large-image {
+            height: 400px;
+        }
+        
+        .medium-image {
+            height: 300px;
+        }
+        
+        .small-image {
+            height: 200px;
+        }
+        /* Two Column Layout */
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        /* Research Insights */
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .insight-card {
+            background: #f8f9fc;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .insight-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-text {
+            font-size: 0.95rem;
+            color: #5a6c7d;
+        }
+        /* User Journey Steps */
+        
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem auto;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .step-description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        /* Results Section */
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+        
+        .result-metric {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        /* Navigation */
+        
+        .case-nav {
+            background: #f8f9fc;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .nav-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 15px;
+            }
+        }
+        /* Animations */
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a href="URL_TO_YOUR_HOMEPAGE" class="logo">Your Name / Logo</a>
+            <a href="URL_TO_YOUR_PORTFOLIO_PAGE" class="back-link">← Back to Portfolio</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>[Project Name]</h1>
+            <p class="hero-subtitle">[Brief, engaging subtitle about the project's goal or impact]</p>
+
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Role</div>
+                    <div class="meta-value">[Your Role, e.g., UX/UI Designer, Product Designer, Researcher]</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Timeline</div>
+                    <div class="meta-value">[e.g., 4 Weeks, Jan - Mar 2024, Ongoing]</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Team</div>
+                    <div class="meta-value">[e.g., Solo Project, 3 UX Designers, Cross-functional Team]</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">[e.g., Figma, Miro, Sketch, Adobe XD, UserTesting.com]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="content">
+        <div class="container">
+
+            <section class="section fade-in">
+                <h2 class="section-title">Project Overview</h2>
+                <p class="text-content">
+                    [Introduce the project here. What is it? What problem does it address generally? Set the stage for the specific case study.]
+                </p>
+
+                <div class="problem-box">
+                    <h3>The Problem</h3>
+                    <p>[Clearly state the core problem your project aims to solve. Be concise and problem-focused.]</p>
+                </div>
+
+                <div class="solution-box">
+                    <h3>The Solution</h3>
+                    <p>[Briefly describe your proposed solution and its main objective in response to the problem.]</p>
+                </div>
+
+                <div class="image-placeholder large-image">
+                    [Before & After Comparison / Key Visual Concept]
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Research & Discovery</h2>
+
+                <h3 class="section-subtitle">User Research</h3>
+                <p class="text-content">
+                    [Describe your user research methods (e.g., interviews, surveys, usability tests) and who your participants were.]
+                </p>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 73%]</div>
+                        <div class="insight-text">[e.g., of users check multiple apps before deciding on a route]</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 85%]</div>
+                        <div class="insight-text">[e.g., prioritize real-time updates over route variety]</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 92%]</div>
+                        <div class="insight-text">[e.g., use mobile phones as primary transport planning tool]</div>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Key User Pain Points</h3>
+                <div class="two-column">
+                    <div>
+                        <h4><strong>[Pain Point 1 Title]</strong></h4>
+                        <p>[Description of Pain Point 1]</p>
+
+                        <h4><strong>[Pain Point 2 Title]</strong></h4>
+                        <p>[Description of Pain Point 2]</p>
+                    </div>
+                    <div>
+                        <h4><strong>[Pain Point 3 Title]</strong></h4>
+                        <p>[Description of Pain Point 3]</p>
+
+                        <h4><strong>[Pain Point 4 Title]</strong></h4>
+                        <p>[Description of Pain Point 4]</p>
+                    </div>
+                </div>
+
+                <div class="image-placeholder medium-image">
+                    [User Research Insights & Quotes/Affinity Map Snippet]
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">User Personas</h2>
+                <p class="text-content">
+                    [Introduce your personas or describe your target audience based on research.]
+                </p>
+
+                <div class="two-column">
+                    <div class="insight-card">
+                        <h3>[Persona Name, Age - Occupation]</h3>
+                        <p><strong>Goal:</strong> [Persona's Primary Goal]</p>
+                        <p><strong>Frustrations:</strong> [Persona's Key Frustrations]</p>
+                        <p><strong>Needs:</strong> [Persona's Key Needs]</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>[Persona Name, Age - Occupation]</h3>
+                        <p><strong>Goal:</strong> [Persona's Primary Goal]</p>
+                        <p><strong>Frustrations:</strong> [Persona's Key Frustrations]</p>
+                        <p><strong>Needs:</strong> [Persona's Key Needs]</p>
+                    </div>
+                </div>
+
+                <div class="image-placeholder medium-image">
+                    [Detailed User Persona Cards]
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Design Process</h2>
+
+                <h3 class="section-subtitle">Information Architecture</h3>
+                <p class="text-content">
+                    [Describe how you structured the project's information, e.g., site map, app navigation.]
+                </p>
+
+                <div class="image-placeholder medium-image">
+                    [Current vs Proposed Information Architecture/Sitemap]
+                </div>
+
+                <h3 class="section-subtitle">User Journey Mapping</h3>
+                <p class="text-content">
+                    [Explain how you mapped the user journey and what insights it provided.]
+                </p>
+
+                <div class="journey-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">[Step 1 Title]</div>
+                        <div class="step-description">[Step 1 Description]</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">[Step 2 Title]</div>
+                        <div class="step-description">[Step 2 Description]</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">[Step 3 Title]</div>
+                        <div class="step-description">[Step 3 Description]</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">[Step 4 Title]</div>
+                        <div class="step-description">[Step 4 Description]</div>
+                    </div>
+                </div>
+
+                <div class="image-placeholder large-image">
+                    [Complete User Journey Map with Touchpoints]
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Design Solutions</h2>
+
+                <h3 class="section-subtitle">1. [Key Design Solution 1 Title]</h3>
+                <p class="text-content">
+                    [Explain the problem addressed by this solution and its primary features/benefits.]
+                </p>
+
+                <div class="image-placeholder large-image">
+                    [Screenshots or Mockups demonstrating Solution 1]
+                </div>
+
+                <h3 class="section-subtitle">2. [Key Design Solution 2 Title]</h3>
+                <p class="text-content">
+                    [Explain the problem addressed by this solution and its primary features/benefits.]
+                </p>
+
+                <div class="two-column">
+                    <div>
+                        <h4><strong>[Benefit/Detail 1 Title]</strong></h4>
+                        <p>[Description of Benefit/Detail 1]</p>
+
+                        <h4><strong>[Benefit/Detail 2 Title]</strong></h4>
+                        <p>[Description of Benefit/Detail 2]</p>
+                    </div>
+                    <div>
+                        <h4><strong>[Benefit/Detail 3 Title]</strong></h4>
+                        <p>[Description of Benefit/Detail 3]</p>
+
+                        <h4><strong>[Benefit/Detail 4 Title]</strong></h4>
+                        <p>[Description of Benefit/Detail 4]</p>
+                    </div>
+                </div>
+
+                <div class="image-placeholder large-image">
+                    [Screenshots or Mockups demonstrating Solution 2]
+                </div>
+
+                <h3 class="section-subtitle">3. [Key Design Solution 3 Title]</h3>
+                <p class="text-content">
+                    [Explain the problem addressed by this solution and its primary features/benefits.]
+                </p>
+
+                <div class="image-placeholder large-image">
+                    [Screenshots or Mockups demonstrating Solution 3]
+                </div>
+
+                <h3 class="section-subtitle">4. [Key Design Solution 4 Title]</h3>
+                <p class="text-content">
+                    [Explain the problem addressed by this solution and its primary features/benefits.]
+                </p>
+
+                <div class="image-placeholder medium-image">
+                    [Screenshots or Mockups demonstrating Solution 4]
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Prototyping & Testing</h2>
+
+                <h3 class="section-subtitle">Interactive Prototype</h3>
+                <p class="text-content">
+                    [Describe the prototype you created and its purpose (e.g., low-fidelity wireframes, high-fidelity interactive mockups).]
+                </p>
+
+                <div class="image-placeholder large-image">
+                    [Interactive Prototype Screens & Flows / Link to Prototype]
+                </div>
+
+                <h3 class="section-subtitle">Usability Testing Results</h3>
+                <p class="text-content">
+                    [Explain how you conducted usability testing, with whom, and what you aimed to measure.]
+                </p>
+
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 65%]</div>
+                        <div class="insight-text">[e.g., faster task completion time]</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 40%]</div>
+                        <div class="insight-text">[e.g., reduction in user errors]</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-number">[e.g., 89%]</div>
+                        <div class="insight-text">[e.g., preferred the new design]</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Results & Impact</h2>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-metric">[e.g., 4.8/5]</div>
+                        <div class="result-description">[e.g., Average usability score]</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-metric">[e.g., -2min]</div>
+                        <div class="result-description">[e.g., Average task time saved]</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-metric">[e.g., 95%]</div>
+                        <div class="result-description">[e.g., Task completion rate]</div>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Key Improvements / Value Proposition</h3>
+                <div class="two-column">
+                    <div>
+                        <h4><strong>[Improvement Area 1]</strong></h4>
+                        <p>[Detail the impact of Improvement Area 1]</p>
+
+                        <h4><strong>[Improvement Area 2]</strong></h4>
+                        <p>[Detail the impact of Improvement Area 2]</p>
+                    </div>
+                    <div>
+                        <h4><strong>[Improvement Area 3]</strong></h4>
+                        <p>[Detail the impact of Improvement Area 3]</p>
+
+                        <h4><strong>[Improvement Area 4]</strong></h4>
+                        <p>[Detail the impact of Improvement Area 4]</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section fade-in">
+                <h2 class="section-title">Key Learnings & Next Steps</h2>
+
+                <h3 class="section-subtitle">What I Learned</h3>
+                <p class="text-content">
+                    [Reflect on what you learned during the project, challenges overcome, or new skills gained.]
+                </p>
+
+                <h3 class="section-subtitle">Next Steps / Future Considerations</h3>
+                <div class="text-content">
+                    <p><strong>[Future Phase Title, e.g., Phase 2 Features]:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>[Potential Next Step 1]</li>
+                        <li>[Potential Next Step 2]</li>
+                        <li>[Potential Next Step 3]</li>
+                    </ul>
+                </div>
+
+                <div class="image-placeholder medium-image">
+                    [Future Features Roadmap / Vision]
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <section class="case-nav">
+        <div class="container">
+            <a href="URL_TO_PREVIOUS_CASE_STUDY" class="nav-button">← Previous Project</a>
+            <a href="URL_TO_NEXT_CASE_STUDY" class="nav-button">Next Project →</a>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections with fade-in class
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling (optional, if you add internal links)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

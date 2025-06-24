@@ -1,0 +1,1141 @@
+/* --- General Styles --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+
+/* New: Prevent scrolling when modal is open */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* --- Header --- */
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+}
+
+.resume-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2) !important;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 600 !important;
+}
+
+.resume-btn:hover {
+    background: linear-gradient(45deg, #764ba2, #667eea) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+
+/* --- Hero Section --- */
+
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    margin: 0 auto;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+
+/* --- Projects Section --- */
+
+.projects {
+    background: white;
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    height: 250px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.project-description {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.project-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #764ba2;
+}
+
+
+/* --- About Section --- */
+
+.about {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 80px 0;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skill {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #2c3e50;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- Contact Section --- */
+
+.contact {
+    background: #2c3e50;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border: 2px solid white;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.contact-link:hover {
+    background: white;
+    color: #2c3e50;
+}
+
+
+/* --- Footer --- */
+
+footer {
+    background: #1a252f;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+
+/* --- Responsive Design --- */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .mobile-resume {
+        display: block;
+        margin: 1rem auto;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    /* Case study modal responsive adjustments */
+    .hero-case-study h1 {
+        font-size: 2.2rem;
+    }
+    .hero-case-study .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    .project-meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-resume {
+        display: none;
+    }
+}
+
+
+/* --- Animations --- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Styles for Project Manager UI */
+
+.portfolio-manager-section {
+    background: #f4f7f6;
+    padding: 80px 0;
+    margin-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.manager-header h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.project-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.project-list-header h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.project-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.project-item.inactive {
+    opacity: 0.7;
+    border-left: 5px solid #bdc3c7;
+    /* Grey border for hidden */
+}
+
+.project-item.active {
+    border-left: 5px solid #667eea;
+    /* Blue border for active */
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align header content to the top */
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    gap: 1rem;
+}
+
+.project-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.project-controls {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow buttons to wrap */
+    gap: 0.5rem;
+    align-items: center;
+    /* Vertically align status and buttons */
+    margin-top: 0.5rem;
+    /* Space from project info on wrap */
+}
+
+.status-indicator {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background: #e6ffee;
+    color: #27ae60;
+}
+
+.status-inactive {
+    background: #ffe6e6;
+    color: #e74c3c;
+}
+
+.project-details {
+    margin-top: 1rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+
+/* --- Buttons --- */
+
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+    background-color: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #5a6fe0;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.btn-secondary:hover {
+    background-color: #dce0e1;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    transform: translateY(-1px);
+}
+
+
+/* --- Modal Styles (for Project Manager) --- */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 60px;
+    animation: fadeIn 0.3s forwards;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    animation: slideIn 0.3s forwards;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #2c3e50;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 40px;
+    align-items: center;
+}
+
+.tag-input {
+    background: #e0e7ff;
+    color: #4a69bd;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.tag-remove {
+    background: none;
+    border: none;
+    color: #4a69bd;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0.2rem;
+}
+
+
+/* Modal Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* Hide portfolio sections when manager is active */
+
+.hide-on-manager-active {
+    display: none;
+}
+
+
+/* --- Case Study Modal Specific Styles --- */
+
+.project-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow-y: scroll;
+    /* Enable scroll if content is too long */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black w/ opacity */
+    animation: fadeIn 0.3s forwards;
+    /* Smooth scrolling on iOS */
+}
+
+.modal-case-study-content {
+    background-color: #fefefe;
+    margin: 0;
+    /* Remove auto margin */
+    width: 100%;
+    /* Take full width */
+    min-height: 100%;
+    /* At least full height */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+    position: relative;
+    padding-top: 0;
+    /* Adjust padding as header is now sticky */
+}
+
+
+/* Header within modal */
+
+.project-modal header {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.project-modal header .logo {
+    font-size: 1.2rem;
+    /* Smaller logo for case study modal header */
+}
+
+.project-modal .back-link {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #667eea;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.project-modal .back-link:hover {
+    color: #764ba2;
+}
+
+
+/* Case Study Hero Section */
+
+.hero-case-study {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.hero-case-study h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: white;
+}
+
+.hero-case-study .hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.meta-item {
+    text-align: center;
+}
+
+.meta-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.meta-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+
+/* Main Content within modal */
+
+.content-case-study {
+    padding: 80px 0;
+    background: #ffffff;
+    line-height: 1.7;
+    color: #2c3e50;
+}
+
+.content-case-study .container {
+    max-width: 900px;
+    /* Adjust container width for case study content */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.content-case-study .section {
+    margin-bottom: 80px;
+}
+
+.content-case-study .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    text-align: left;
+    /* Override global section-title alignment */
+}
+
+.content-case-study .section-subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: #34495e;
+}
+
+.content-case-study .text-content {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #5a6c7d;
+}
+
+
+/* Problem Statement */
+
+.problem-box {
+    background: #fff5f5;
+    border-left: 4px solid #e74c3c;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.problem-box h3 {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+
+/* Solution Box */
+
+.solution-box {
+    background: #f0fff4;
+    border-left: 4px solid #27ae60;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.solution-box h3 {
+    color: #27ae60;
+    margin-bottom: 1rem;
+}
+
+
+/* Image Placeholders */
+
+.image-placeholder {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border: 2px dashed #ced4da;
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: #6c757d;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.large-image {
+    height: 400px;
+}
+
+.medium-image {
+    height: 300px;
+}
+
+.small-image {
+    height: 200px;
+}
+
+
+/* Two Column Layout */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+
+/* Research Insights */
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.insight-card {
+    background: #f8f9fc;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.insight-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.insight-text {
+    font-size: 0.95rem;
+    color: #5a6c7d;
+}
+
+
+/* User Journey Steps */
+
+.journey-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.step {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.step-number {
+    background: #667eea;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin: 0 auto 1rem auto;
+}
+
+.step-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.step-description {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+
+/* Results Section */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.result-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+}
+
+.result-metric {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.result-description {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+
+/* Navigation for case study */
+
+.case-nav {
+    background: #f8f9fc;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.nav-button {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+
+/* Animations for case study content */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
