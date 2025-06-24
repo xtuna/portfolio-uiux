@@ -803,7 +803,15 @@ function openCaseStudyModal(event, id) {
                 <i class="fas fa-file-alt"></i> View Document
             </a>`;
         }
-        const linkSection = `<div class="project-links">${linksHTML}</div>`;
+        const linkSection = `
+          <section class="section fade-in">
+            <h2 class="section-title">Explore the Project</h2>
+            <div class="project-links">
+              ${linksHTML}
+            </div>
+          </section>
+        `;
+
 
         // Now get the container and inject the content
         const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
