@@ -7,7 +7,6 @@ const defaultProjects = [{
     tags: ["Mobile App", "User Research", "Prototyping", "UI Design"],
     active: true,
     // Add case study specific data here for each project
-    figmaUrl: "https://example.com/sakay-live",
     caseStudy: {
         subtitle: "Reimagining public transport navigation for Metro Manila commuters",
         role: "UX/UI Designer",
@@ -307,6 +306,7 @@ const defaultProjects = [{
             </section>
         `
     }
+    figmaUrl: "https://example.com/sakay-live",
 }, {
     id: 2,
     title: "Filipino Restaurant Chain Website",
