@@ -817,7 +817,6 @@ function openCaseStudyModal(event, id) {
         // Now get the container and inject the content
         const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
         caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
-        console.log('Injected case study content:', caseStudyContentContainer.innerHTML);
 
 
         // Fill header info
