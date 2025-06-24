@@ -796,7 +796,7 @@ function openCaseStudyModal(event, id) {
                 </section>
             `;
         }
-        
+    
         // Now get the container and inject the content
         const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
         caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + figmaButtonHTML;
