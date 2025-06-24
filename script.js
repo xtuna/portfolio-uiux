@@ -304,9 +304,6 @@ const defaultProjects = [{
                 <div class="image-placeholder medium-image">
                     Future Features Roadmap
                 </div>
-                <div class="project-links">
-                    <!-- Buttons should be here -->
-                </div>
             </section>
         `
     }
