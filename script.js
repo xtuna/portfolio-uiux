@@ -808,11 +808,12 @@ function openCaseStudyModal(event, id) {
         }
         const linkSection = `
           <section class="section fade-in">
-            <h2 class="section-title">Explore the Project</h2>
-            <div class="project-links">
-              ${linksHTML}
-            </div>
-          </section>
+              <h2 class="section-title">Explore the Project</h2>
+              <div class="project-links">
+                <!-- Buttons should be here -->
+              </div>
+            </section>
+
         `;
 
 
