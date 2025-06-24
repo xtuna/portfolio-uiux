@@ -774,23 +774,42 @@ function renderPublicProjects() {
 }
 
 function openCaseStudyModal(event, id) {
-    event.preventDefault(); // Prevent default link behavior
+    event.preventDefault();
     const modal = document.getElementById('caseStudyModal');
     const project = projects.find(p => p.id === id);
 
     if (project && project.caseStudy) {
-        currentCaseStudyId = id; // Set the currently active case study ID
+        currentCaseStudyId = id;
 
-        // Generate project links inline
+        // Generate links inline
         let linksHTML = '';
         if (project.figmaUrl) {
             linksHTML += `<a href="${project.figmaUrl}" class="project-link" target="_blank">
                 <i class="fab fa-figma"></i> View Figma
             </a>`;
         }
+        if (project.liveUrl) {
+            linksHTML += `<a href="${project.liveUrl}" class="project-link" target="_blank">
+                <i class="fas fa-globe"></i> View Live
+            </a>`;
+        }
+        if (project.githubUrl) {
+            linksHTML += `<a href="${project.githubUrl}" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> View Code
+            </a>`;
+        }
+        if (project.documentUrl) {
+            linksHTML += `<a href="${project.documentUrl}" class="project-link" target="_blank">
+                <i class="fas fa-file-alt"></i> View Document
+            </a>`;
+        }
         const linkSection = `<div class="project-links">${linksHTML}</div>`;
 
-        // Populate header
+        // Now get the container and inject the content
+        const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
+        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
+
+        // Fill header info
         document.getElementById('caseStudyTitle').textContent = project.title;
         document.getElementById('caseStudySubtitle').textContent = project.caseStudy.subtitle;
         document.getElementById('caseStudyRole').textContent = project.caseStudy.role;
@@ -798,19 +817,13 @@ function openCaseStudyModal(event, id) {
         document.getElementById('caseStudyTeam').textContent = project.caseStudy.team;
         document.getElementById('caseStudyTools').textContent = project.caseStudy.tools;
 
-        // Populate main content + link section
-        const caseStudyContentContainer = document.getElementById('caseStudyContent').querySelector('.container');
-        caseStudyContentContainer.innerHTML = project.caseStudy.contentHTML + linkSection;
-
-        // Re-observe elements inside the modal for animations
+        // Re-observe animated sections
         caseStudyContentContainer.querySelectorAll('.fade-in').forEach(section => {
             section.classList.remove('visible');
             observer.observe(section);
         });
 
-        // Update Prev/Next buttons visibility
         updateCaseStudyNavButtons();
-
         modal.style.display = 'block';
         document.body.classList.add('modal-open');
     } else {
